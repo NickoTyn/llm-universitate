@@ -1,0 +1,49 @@
+📦 Instalare (prima dată, pas cu pas)
+🔧 1. Verifică dacă ai Python 3.11 instalat
+Mergi la folderul unde ai instalat Python: #python --version
+
+
+
+Dacă nu ai Python 3.11 instalat:
+Descarcă Python 3.11.9 de aici: https://www.python.org/ftp/python/3.11.9/python-3.11.9-amd64.exe
+La instalare, bifează: "Add Python to PATH" sau reține folderul unde îl instalezi
+
+📁 2. Deschide terminalul în folderul proiectului
+Navighează în Windows Explorer la folderul proiectului (ex:Proiect LLM pe documente Universitate)
+
+Ține Shift și fă Click Dreapta în folder
+
+Alege "Open PowerShell window here" sau "Open in Terminal"
+
+🛠️ 3. Creează environment virtual
+Scrie în terminal:
+
+powershell
+Copiază
+Editează
+E:\Toola\Python\python.exe -m venv .venv
+Asta creează un mediu izolat Python în folderul .venv, în proiectul tău.
+
+⚙️ 4. Activează environmentul virtual
+În același terminal:
+
+powershell
+Copiază
+Editează
+.venv\Scripts\activate
+După activare, vei vedea prefixul (.venv) la începutul liniei din terminal — înseamnă că e activ.
+
+📥 5. Instalează toate pachetele necesare
+În terminalul activ:
+
+bash
+Copiază
+Editează
+pip install langchain faiss-cpu gradio pymupdf python-docx langchain-community
+💡 Notă:
+Dacă primești vreun mesaj că pip este vechi, îl poți actualiza cu:
+
+bash
+Copiază
+Editează
+python -m pip install --upgrade pip

@@ -1,49 +1,84 @@
-📦 Instalare (prima dată, pas cu pas)
+📦 Instalare (prima dată, pas cu pas) — cu DeepSeek + Ollama
 🔧 1. Verifică dacă ai Python 3.11 instalat
-Mergi la folderul unde ai instalat Python: #python --version
+În terminal:
 
+bash
+Copiază
+Editează
+python --version
+Dacă ai ceva gen Python 3.11.x, ești ok.
 
+❌ Dacă nu ai:
+➡️ Descarcă de aici:
+🔗 https://www.python.org/ftp/python/3.11.9/python-3.11.9-amd64.exe
 
-Dacă nu ai Python 3.11 instalat:
-Descarcă Python 3.11.9 de aici: https://www.python.org/ftp/python/3.11.9/python-3.11.9-amd64.exe
-La instalare, bifează: "Add Python to PATH" sau reține folderul unde îl instalezi
+📌 La instalare:
+
+✅ Bifează „Add Python to PATH”
+
+Sau reține folderul de instalare
 
 📁 2. Deschide terminalul în folderul proiectului
-Navighează în Windows Explorer la folderul proiectului (ex:Proiect LLM pe documente Universitate)
+Navighează în Windows Explorer la folderul proiectului (ex: Proiect LLM pe documente Universitate)
 
-Ține Shift și fă Click Dreapta în folder
-
-Alege "Open PowerShell window here" sau "Open in Terminal"
+Ține Shift + Click Dreapta → Alege „Open PowerShell window here” sau „Open in Terminal”
 
 🛠️ 3. Creează environment virtual
-Scrie în terminal:
+În terminalul tău:
 
-powershell
+bash
 Copiază
 Editează
 E:\Toola\Python\python.exe -m venv .venv
-Asta creează un mediu izolat Python în folderul .venv, în proiectul tău.
+✅ Asta creează un mediu Python izolat în folderul .venv.
 
 ⚙️ 4. Activează environmentul virtual
 În același terminal:
 
-powershell
+bash
 Copiază
 Editează
 .venv\Scripts\activate
-După activare, vei vedea prefixul (.venv) la începutul liniei din terminal — înseamnă că e activ.
+Dacă vezi prefixul (.venv) înaintea liniei de comandă — totul e ok.
 
-📥 5. Instalează toate pachetele necesare
-În terminalul activ:
+📥 5. Instalează toate pachetele necesare pentru DeepSeek via Ollama
+bash
+Copiază
+Editează
+pip install --upgrade pip
+pip install langchain langchain-community faiss-cpu pymupdf python-docx
+👉 Dacă vrei suport complet și actualizat pentru OllamaEmbeddings, instalează și:
 
 bash
 Copiază
 Editează
-pip install langchain faiss-cpu gradio pymupdf python-docx langchain-community
-💡 Notă:
-Dacă primești vreun mesaj că pip este vechi, îl poți actualiza cu:
+pip install langchain-ollama
+🤖 6. Instalează Ollama și modelul DeepSeek
+✅ Dacă nu ai Ollama:
+
+Descarcă de la: https://ollama.com
+
+Instalează pentru Windows
+
+✅ Apoi rulează în terminal:
 
 bash
 Copiază
 Editează
-python -m pip install --upgrade pip
+ollama run deepseek-coder:6.7b-instruct
+🧠 Dacă ai un GPU puternic (ex: RTX 4090):
+
+bash
+Copiază
+Editează
+ollama run deepseek-coder:33b-instruct
+✅ 7. Configurează codul tău Python
+În ingest.py și codul FastAPI:
+
+python
+Copiază
+Editează
+from langchain_community.embeddings import OllamaEmbeddings
+from langchain_ollama import OllamaEmbeddings  # dacă ai instalat pachetul nou
+
+embeddings = OllamaEmbeddings(model="deepseek-coder:6.7b-instruct")  # sau 33b dacă ai resurse
